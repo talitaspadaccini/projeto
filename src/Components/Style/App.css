@@ -1,0 +1,46 @@
+body {
+    display: block;
+    margin: 10px;
+}
+
+#root {
+    display: block;
+}
+
+.usersStyle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1%;
+    background-color:rgba(50, 52, 79, 1);
+    font-family: sans-serif;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+.itensLeft {
+    display: flex;
+    align-items: center;
+    margin-inline-start: 5px;
+    width: 90%;
+}
+
+.userName {
+    margin-left: 10px;
+}
+
+.userPic {
+    margin-left: 5%;
+}
+
+.buttonPay {
+    margin-inline-end: 5px;
+    width: 10%;
+}
+
+#button {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 80%;
+}
