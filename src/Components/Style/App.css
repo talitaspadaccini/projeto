@@ -7,11 +7,12 @@ body {
 
 #root {
     display: block;
-    width: 50%;
+    width: 45%;
 }
 
 .usersStyle {
     display: flex;
+    height: 150px;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1%;
@@ -35,6 +36,11 @@ body {
 
 .userPic {
     margin-left: 5%;
+}
+
+#imgPic {
+    border-radius: 50%;
+    height: 100px;
 }
 
 .buttonPay {
