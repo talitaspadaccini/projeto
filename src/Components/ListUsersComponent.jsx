@@ -17,7 +17,7 @@ return (
   <div className='usersStyle'>
     <div className='itensLeft'>
     <div className='userPic'>
-      <img src={item.img} alt=''/>
+      <img id="imgPic" src={item.img} alt=''/>
     </div>
     <div className='userName'>
       <div>
