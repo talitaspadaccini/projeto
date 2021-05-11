@@ -6,7 +6,9 @@ const elementUser = document.getElementById('root');
 
 ReactDom.render(
   <div>
-    <ListUsers/>
+    <React.StrictMode>
+     <ListUsers/>
+    </React.StrictMode>
   </div>
   , elementUser
   )
