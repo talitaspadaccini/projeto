@@ -7,6 +7,7 @@ import ModalPay from './ModalPayComponent'
 export default function CarregaUsers() {
 
   const [users, setUsers] = useState([]);
+  const [listUsers, setListUsers] = useState("flex")
   const [modalDisplay, setModalDisplay] = useState(false);
   const [nameUser, setNameUser] = useState("");
 
@@ -18,6 +19,7 @@ export default function CarregaUsers() {
 
   function clickButtonPay(name) {
     setModalDisplay(true);
+    setListUsers("none");
     setNameUser(name)
   }
 
@@ -25,7 +27,7 @@ export default function CarregaUsers() {
 
   return (
     users.map((item, key) =>
-      < div className='usersStyle' >
+      < div className='usersStyle'  >
         <div className='itensLeft'>
           <div className='userPic'>
             <img id="imgPic" src={item.img} alt='' />
@@ -41,10 +43,11 @@ export default function CarregaUsers() {
         </div>
         <div className='buttonPay'>
           <button id='button' onClick={() => { clickButtonPay(item.name) }}>Pagar</button>
-          {modalDisplay ? (
-            <Modal onClose={() => setModalDisplay(false)} />) : null}
         </div>
+        {modalDisplay ? (
+            <Modal onClose={() => setModalDisplay(false)} />) : null}
       </div >
+      
     )
   )
 }
