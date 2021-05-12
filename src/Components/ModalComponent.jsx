@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import CurrencyInput from 'react-currency-masked-input';
 import './Style/App.css';
-import ListUser from './ListUsersComponent';
+import ModalPay from './ModalPayComponent'
 
 const Modal = ({ id = 'containerModal', onClose = () => { }, children }) => {
 
     const [cardsProfile, setCardsProfile] = useState([]);
+    const [modalPayDisplay, setModalPayDisplay] = useState(true);
 
     let cards = [
         // valid card
@@ -54,15 +55,21 @@ const Modal = ({ id = 'containerModal', onClose = () => { }, children }) => {
         setErrors(validate(form));
     }
 
+    function validClick() {
+        if (form.name) {
+            setModalPayDisplay(false)
+        }
+    }
+
     return (
         <div id={id} className='boxModal' onClick={handleOutsideClick}>
             <div className='containerModal'>
                 <div className='containerHeaderModal'>
-                    <div className='headerPay'>Pagamento para {window.nome}</div>
+                    <div className='headerPay'>Pagamento para <b>{window.name}</b></div>
                 </div>
                 <div className='containerBodyModal'>
                     <form onSubmit={e => handleSubmit(e)}>
-                        <CurrencyInput name='name' className='inputValue' placeholder='R$ 0,00' onChange={e => handleChange(e)}/>
+                        <CurrencyInput name='name' className='inputValue' placeholder='R$ 0,00' onChange={e => handleChange(e)} />
                         {errors.name && <p className='errorInput'>{errors.name}</p>}
                         <select value={cardsProfile} onChange={e => setCardsProfile(e.target.value)} className='selectCard'>
                             <option value='selection' disabled selected>Selecione o cartão</option>
@@ -70,8 +77,10 @@ const Modal = ({ id = 'containerModal', onClose = () => { }, children }) => {
                                 <option value={item.key}>Cartão com final {item.card_number.substring(12, 16)}</option>
                             ))}
                         </select>
-                        <button id='buttonPayModal'>Pagar</button>
+                        <button id='buttonPayModal' onClick={() => { validClick() }}>Pagar</button>
                         <div className='content'>{children}</div>
+                        {modalPayDisplay ? (
+                            <ModalPay onClose={() => setModalPayDisplay(false)} />) : null}
                     </form>
                 </div>
             </div>
